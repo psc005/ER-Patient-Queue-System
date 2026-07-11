@@ -95,7 +95,7 @@ Patient* createPatient(){
     int priorityScore;
 
     printf("Enter Name:\n");
-    scanf("%s", &name);
+    scanf("%s", name);
     printf("Name: %s", name);
 
     printf("Enter Age:\n");
