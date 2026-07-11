@@ -66,8 +66,8 @@ return 0;
 }
 
 void displayMenu(){
-    printf("*******Please enter the number corresponding to the menu choice:\n*******");
-    printf("1: Add new patient/n2: Get next patient/n3: Update patient information/n4: Display waitlist/n 5: Display ER statistics\n\n");
+    printf("Please enter the number corresponding to the menu choice:\n\n");
+    printf("1: Add new patient\n2: Get next patient\n3: Update patient information\n4: Display waitlist\n5: Display ER statistics\n6: Exit\n\n");
     
 }
 
