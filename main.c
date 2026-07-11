@@ -156,6 +156,19 @@ void addPatient(Patient **head, Patient *newPatient){
 }
 
 void displayPatients(Patient *head){
+    if (head == NULL)
+        return NULL;
+    Patient* currentPtr = head;
+    while (currentPtr->next) {
+        printf("%s\n", currentPtr->name);
+        printf("%d\n", currentPtr-> age);
+        printf("%d\n", currentPtr->painLevel);
+        printf("%d\n", currentPtr->priorityScore);
+        currentPtr = currentPtr->next;
+
+        printf("\n\n");
+    }
+
 }
 
 Patient* searchPatient(Patient *head, int patientID){
