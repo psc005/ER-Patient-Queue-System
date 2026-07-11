@@ -34,6 +34,7 @@ int main(){
     Patient *newPatient = NULL; 
     int choice; 
     displayMenu(); 
+    scanf("%d", &choice);
     switch(choice){
         case 1:
             newPatient = createPatient(); 
