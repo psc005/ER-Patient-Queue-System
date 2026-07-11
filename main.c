@@ -18,7 +18,7 @@ typedef struct Patient{
 void displayMenu(); //complete
 int isEmpty(Patient **head); //complete 
 Patient* createPatient(); //complete 
-void updateWaitTimes(Patient **head);
+void updatePriorities(Patient **head);
 void printPatient(Patient *Patient); //complete 
 int calculatePriority(Patient *Patient); //complete 
 void addPatient(Patient **head, Patient *newPatient); //complete 
@@ -123,9 +123,6 @@ Patient* createPatient(){
     return newPatient;
 }
 
-void updateWaitTimes(Patient **head){
-}
-
 int calculatePriority(Patient *Patient){
     int priority = 0; 
 
@@ -151,6 +148,33 @@ int calculatePriority(Patient *Patient){
 
     return priority;
 }
+
+void updatePriorities(Patient **head){
+    if(isEmpty(head))
+        return;
+
+    Patient *current = *head;
+    Patient *newHead = NULL;
+
+    while(current != NULL){
+
+        Patient *next = current->next;
+
+        time_t currentTime = time(NULL);
+        int waitMinutes = (currentTime - current->arrivalTime) / 60;
+
+        current->priorityScore = calculatePriority(current) + (waitMinutes / 30) * 5;
+
+        current->next = NULL;
+
+        addPatient(&newHead, current);
+
+        current = next;
+    }
+
+    *head = newHead;
+}
+
 
 void addPatient(Patient **head, Patient *newPatient){
     newPatient->priorityScore = calculatePriority(newPatient);
