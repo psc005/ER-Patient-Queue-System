@@ -74,7 +74,11 @@ void displayMenu(){
     
 }
 
-int isEmpty(Patient **head){
+int isEmpty(Patient** head) {
+    if (head == NULL)
+        return 1;
+
+    return 0;
 }
 
 Patient* createPatient(){
