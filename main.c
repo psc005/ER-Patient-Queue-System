@@ -180,11 +180,16 @@ void addPatient(Patient **head, Patient *newPatient){
 void printPatient(Patient* patient) {
     if (isEmpty(patient))
         return;
-    printf("%s\n", patient->name);
-    printf("%d\n", patient->age);
-    printf("%d\n", patient->painLevel);
-    printf("%d\n", patient->priorityScore);
-
+    
+    time_t currentTime = time(NULL);
+    
+    int waitMinutes = (currentTime - patient->arrivalTime) / 60;
+    
+    printf("Patient name: %s\n", patient->name);
+    printf("Age: %d\n", patient->age);
+    printf("Pain Level: %d\n", patient->painLevel);
+    printf("Priority Score: %d\n", patient->priorityScore);
+    printf("Wait Time: %d minutes\n", waitMinutes);
     printf("\n\n");
 }
 
