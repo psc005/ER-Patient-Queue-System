@@ -78,7 +78,7 @@ int isEmpty(Patient **head){
 }
 
 Patient* createPatient(){
-    char name[50];
+    char* name;
     int age;
     int painLevel;
     int priorityScore;
@@ -105,8 +105,14 @@ Patient* createPatient(){
 
     newPatient->age = age;
     newPatient->painLevel = painLevel;
-    newPatient->priorityScore = 0;
-    strcpy(newPatient->name, name);
+    newPatient->priorityScore = priorityScore;
+    char* ptr = malloc((strlen(name) + 1) * sizeof(char));
+    if (ptr == NULL)
+        return NULL;
+    strcpy(newPatient->name, ptr);
+    newPatient->next = NULL;
+
+    return newPatient;
 }
 
 int calculatePriority(Patient *Patient){
