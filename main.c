@@ -96,19 +96,15 @@ Patient* createPatient(){
 
     printf("Enter Name:\n");
     scanf("%s", name);
-    printf("Name: %s", name);
 
     printf("Enter Age:\n");
     scanf("%d", &age);
-    printf("Age: %d", age);
 
     printf("Enter pain level:\n");
     scanf("%d", &painLevel);
-    printf("Pain Level: %d", painLevel);
 
     printf("Enter priority score:\n");
     scanf("%d", &priorityScore);
-    printf("Priority Score: %d", priorityScore);
     
     Patient* newPatient = malloc(sizeof(Patient));
     if (newPatient == NULL)
