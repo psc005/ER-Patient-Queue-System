@@ -222,7 +222,6 @@ void showNextPatient(Patient **head){
 }
 
 void displayStatistics(Patient *head){
-    void displayStatistics(Patient *head){
     if(isEmpty(&head)){
         printf("No patients currently waiting.\n"); 
         return;
@@ -262,8 +261,6 @@ void displayStatistics(Patient *head){
     printf("Non-Urgent: %d\n", nonUrgent);
 
     printf("********************\n\n"); 
-    
-}
 }
 
 void freeList(Patient *head){
