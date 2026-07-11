@@ -31,6 +31,7 @@ void freeList(Patient *head); //complete
 
 int main(){
     Patient *head = NULL; 
+    Patient *newPatient = NULL; 
     int choice; 
     displayMenu(); 
     switch(choice){
@@ -80,7 +81,7 @@ void displayMenu(){
 }
 
 int isEmpty(Patient** head) {
-    if (head == NULL)
+    if (*head == NULL)
         return 1;
 
     return 0;
@@ -204,8 +205,8 @@ void addPatient(Patient **head, Patient *newPatient){
 }
 
 void printPatient(Patient* patient) {
-    if (isEmpty(patient))
-        return;
+    if(patient == NULL)
+        return; 
     
     time_t currentTime = time(NULL);
     
@@ -220,17 +221,15 @@ void printPatient(Patient* patient) {
 }
 
 void displayPatients(Patient *head){
-    if (head == NULL)
-        return NULL;
+    if (head == NULL){
+        printf("No patients currently waiting.\n"); 
+        return;
+    }
     Patient* currentPtr = head;
-    while (currentPtr->next) {
-        printf("%s\n", currentPtr->name);
-        printf("%d\n", currentPtr-> age);
-        printf("%d\n", currentPtr->painLevel);
-        printf("%d\n", currentPtr->priorityScore);
-        currentPtr = currentPtr->next;
-
-        printf("\n\n");
+    
+    while(currentPtr){
+        printPatient(current); 
+        current = current->next; 
     }
 
 }
@@ -334,14 +333,14 @@ void displayStatistics(Patient *head){
     }
 
     int totalPatients = 0; 
-    int crital = 0; 
-    int urgemt = 0; 
+    int critical = 0; 
+    int urgent = 0; 
     int nonUrgent = 0; 
 
     Patient *highestPriority = head; 
     Patient *curr = head; 
 
-    while(!curr){
+    while(curr){
         totalPatients++; 
         if(curr->severity == 3){
             critical++; 
@@ -359,7 +358,7 @@ void displayStatistics(Patient *head){
     printf("\nER Statistics:\n********************\n");
     printf("Total patients waiting: %d\n\n", totalPatients); 
     printf("Highest priority patient:\n"); 
-    printf(Name: %s\n", highestPriority->name); 
+    printf("Name: %s\n", highestPriority->name); 
     printf("Priority Score: %d\n\n", highestPriority->priorityScore); 
     printf("Severity Breakdown:\n");
     printf("Critical: %d\n", critical);
@@ -374,7 +373,7 @@ void freeList(Patient *head){
     Patient *curr = head; 
     Patient *next; 
 
-    while(!curr){
+    while(curr){
         next = curr->next; 
         free(curr); 
         curr = next; 
