@@ -34,7 +34,14 @@ int main(){
     Patient *newPatient = NULL; 
     int choice; 
     displayMenu(); 
-    scanf("%d", &choice);
+    
+
+    if (scanf("%d", &choice) != 1) {
+    printf("Invalid input.\n");
+    while(getchar() != '\n'); // clear bad input
+    continue;
+    }
+    
     switch(choice){
         case 1:
             newPatient = createPatient(); 
