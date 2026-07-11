@@ -372,6 +372,7 @@ void freeList(Patient *head){
 
     while(curr){
         next = curr->next; 
+        free(curr->name); 
         free(curr); 
         curr = next; 
     }
